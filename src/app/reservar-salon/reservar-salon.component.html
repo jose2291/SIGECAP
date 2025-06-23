@@ -1,0 +1,75 @@
+<div class="reservar-container" *ngIf="!mostrarFormulario">
+  <div class="header-top">
+    <h2><i class="fas fa-calendar-alt"></i> Reservar Salón</h2>
+    <div class="fecha-hora">
+      <i class="fas fa-clock"></i> {{ fechaHoraActual }}
+    </div>
+    <button class="btn-volver" (click)="volver()">
+      <i class="fas fa-arrow-left"></i> Volver al Menú
+    </button>
+  </div>
+
+  <div class="calendar">
+    <div class="calendar-header">
+      <div class="cell"></div>
+      <div class="cell" *ngFor="let dia of dias">{{ dia }}</div>
+    </div>
+
+    <div class="calendar-body">
+      <div *ngFor="let hora of horas" class="row">
+        <div class="cell hora">{{ hora }}</div>
+        <div *ngFor="let dia of dias" class="cell"
+             [ngClass]="getClaseReserva(dia, hora)">
+          <span class="reserva-text">{{ obtenerReserva(dia, hora) }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <button class="btn-reservar" (click)="mostrarFormulario = true">
+      <i class="fas fa-plus-circle"></i> Nueva Reserva
+    </button>
+  </div>
+</div>
+
+<!-- Subpágina dinámica -->
+<div class="subpagina" *ngIf="mostrarFormulario">
+  <h3><i class="fas fa-plus-circle"></i> Nueva Reserva</h3>
+  <form (submit)="crearReserva()">
+    <label>Salón:
+      <select [(ngModel)]="nuevaReserva.salon" name="salon">
+        <option *ngFor="let salon of salones" [value]="salon">{{ salon }}</option>
+      </select>
+    </label>
+
+    <label>Día:
+      <select [(ngModel)]="nuevaReserva.dia" name="dia">
+        <option *ngFor="let dia of dias" [value]="dia">{{ dia }}</option>
+      </select>
+    </label>
+
+    <label>Hora:
+      <select [(ngModel)]="nuevaReserva.hora" name="hora">
+        <option *ngFor="let hora of horas" [value]="hora">{{ hora }}</option>
+      </select>
+    </label>
+
+    <label>Tipo de Reunión:
+      <select [(ngModel)]="nuevaReserva.tipo" name="tipo">
+        <option value="formacion">Formación</option>
+        <option value="reunion">Reunión</option>
+        <option value="otro">Otro</option>
+      </select>
+    </label>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-confirmar">
+        <i class="fas fa-check"></i> Confirmar
+      </button>
+      <button type="button" (click)="mostrarFormulario = false" class="btn-cancelar">
+        <i class="fas fa-times"></i> Cancelar
+      </button>
+    </div>
+  </form>
+</div>
