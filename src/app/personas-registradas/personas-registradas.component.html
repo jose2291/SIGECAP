@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="page-header">
+    <h1><i class="fas fa-users"></i> Personas Registradas</h1>
+    <button class="btn-registro" (click)="goToRegistro()">
+      <i class="fas fa-user-plus"></i> Registrar Persona
+    </button>
+  </div>
+
+  <div class="card">
+    <table class="tabla-personas">
+      <thead>
+        <tr>
+          <th>N° Empleado</th>
+          <th>Nombre Completo</th>
+          <th>DNI</th>
+          <th>Correo</th>
+          <th>Departamento</th>
+          <th>Cargo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Ejemplo estático -->
+        <tr>
+          <td>EMP001</td>
+          <td>Juan Pérez</td>
+          <td>0801199012345</td>
+          <td>juanejemplo.com</td>
+          <td>Tecnología</td>
+          <td>Analista</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="volver-container">
+    <button class="btn-volver" (click)="volver()">
+      <i class="fas fa-arrow-left"></i> Volver al Menú
+    </button>
+  </div>
+</div>
