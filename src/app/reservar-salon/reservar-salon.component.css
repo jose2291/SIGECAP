@@ -1,0 +1,162 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+.reservar-container {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 2rem;
+  background-color: #f0f4f8;
+  min-height: 100vh;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.fecha-hora {
+  font-size: 0.95rem;
+  color: #003366;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+}
+
+.btn-volver {
+  background-color: #b22222;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-volver:hover {
+  background-color: #a30000;
+}
+
+.calendar {
+  margin-top: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+}
+
+.calendar-header,
+.row {
+  display: grid;
+  grid-template-columns: 100px repeat(5, 1fr);
+}
+
+.cell {
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
+  text-align: center;
+}
+
+.cell:last-child {
+  border-right: none;
+}
+
+.hora {
+  background-color: #003366;
+  color: white;
+  font-weight: bold;
+}
+
+.calendar-header .cell {
+  background-color: #0055a5;
+  color: white;
+  font-weight: bold;
+}
+
+.bottom-bar {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+
+.btn-reservar {
+  background-color: #0055a5;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-reservar:hover {
+  background-color: #003366;
+}
+
+.formacion {
+  background-color: #c3e6cb;
+}
+
+.reunion {
+  background-color: #bee5eb;
+}
+
+.otro {
+  background-color: #f5c6cb;
+}
+
+.subpagina {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: white;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.subpagina h3 {
+  color: #003366;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.subpagina form label {
+  display: block;
+  margin-bottom: 1rem;
+  color: #003366;
+  font-weight: bold;
+}
+
+.subpagina select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 0.25rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.btn-confirmar {
+  background-color: #28a745;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-cancelar {
+  background-color: #b22222;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
