@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="form-card">
+    <div class="encabezado">
+      <h2><i class="fas fa-user-plus"></i> Asignar Rol a {{ empleadoNombre }}</h2>
+      <button class="btn-volver" (click)="volverARoles()">
+        <i class="fas fa-arrow-left"></i> Volver
+      </button>
+    </div>
+
+    <div class="form-group">
+      <label for="rol">Rol:</label>
+      <select id="rol" [(ngModel)]="rolSeleccionado" (change)="onSeleccionRol()">
+        <option value="">-- Selecciona un rol --</option>
+        <option *ngFor="let rol of rolesDisponibles" [value]="rol.nombre">
+          {{ rol.nombre }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción del Rol:</label>
+      <textarea id="descripcion" [(ngModel)]="descripcion" rows="5" readonly></textarea>
+    </div>
+
+    <div class="botones-finales">
+      <button class="btn-guardar" (click)="guardarRol()">
+        <i class="fas fa-save"></i> Guardar Rol
+      </button>
+
+      <button class="btn-permisos" (click)="irAPermisos()">
+        <i class="fas fa-key"></i> Agregar Permisos
+      </button>
+    </div>
+  </div>
+</div>
