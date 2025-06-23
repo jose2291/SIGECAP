@@ -1,0 +1,44 @@
+<div class="layout">
+  <aside class="sidebar">
+    <div class="logo">SIGECAP</div>
+
+    <nav class="menu">
+      <a (click)="navigateTo('/personas-registradas')">
+        <i class="fas fa-user-plus"></i> Registro de Personas
+      </a>
+      <a (click)="navigateTo('/reservar-salon')">
+        <i class="fas fa-calendar-alt"></i> Reservar Salón
+      </a>
+      <a (click)="navigateTo('/nueva-capacitacion')">
+        <i class="fas fa-chalkboard-teacher"></i> Nueva Capacitación
+      </a>
+      <a (click)="navigateTo('/ver-empleados')">
+        <i class="fas fa-user-cog"></i> Crear Operario
+      </a>
+
+      <div class="dropdown">
+        <div class="dropdown-toggle" (click)="toggleSubmenu()">
+          <i class="fas fa-shield-alt"></i> Seguridad
+          <i [class.fa-chevron-down]="!submenuOpen" [class.fa-chevron-up]="submenuOpen" class="fas"></i>
+        </div>
+        <div class="submenu" [class.show]="submenuOpen">
+          <a (click)="navigateTo('/roles')">
+            <i class="fas fa-user-lock"></i> Roles y Permisos
+          </a>
+          <a (click)="navigateTo('/usuarios')">
+            <i class="fas fa-users"></i> Usuarios
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <a class="logout" (click)="logout()">
+      <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+    </a>
+  </aside>
+
+  <main class="content">
+    <h1>Bienvenido al sistema de capacitación de TSC</h1>
+    <p>Utilice el menú de la izquierda para acceder a las funciones del sistema.</p>
+  </main>
+</div>
