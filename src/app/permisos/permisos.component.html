@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="form-card">
+    <h2><i class="fas fa-key"></i> Asignar Permisos por Área</h2>
+
+    <div class="area" *ngFor="let area of areas">
+      <h3><i class="fas fa-folder"></i> {{ area.nombre }}</h3>
+
+      <div class="permisos">
+        <label class="switch-label">Ver
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="area.ver" checked>
+            <span class="slider round"></span>
+          </label>
+        </label>
+        <label class="switch-label">Crear
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="area.crear" checked>
+            <span class="slider round"></span>
+          </label>
+        </label>
+        <label class="switch-label">Editar
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="area.editar" checked>
+            <span class="slider round"></span>
+          </label>
+        </label>
+        <label class="switch-label">Eliminar
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="area.eliminar" checked>
+            <span class="slider round"></span>
+          </label>
+        </label>
+      </div>
+    </div>
+
+    <div class="botones-finales">
+      <button class="btn-guardar" (click)="guardarPermisos()">
+        <i class="fas fa-save"></i> Guardar Permisos
+      </button>
+      <button class="btn-volver" (click)="volver()">
+        <i class="fas fa-arrow-left"></i> Volver
+      </button>
+    </div>
+  </div>
+</div>
