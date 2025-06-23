@@ -1,0 +1,94 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+.container {
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between; /* Alineación entre título y botón */
+  align-items: center;
+  gap: 0.5rem;
+  color: #003366;
+}
+
+.card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.tabla-personas {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-personas th,
+.tabla-personas td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.tabla-personas th {
+  background-color: #003366;
+  color: white;
+}
+
+.tabla-personas tr:hover {
+  background-color: #f1f1f1;
+}
+
+.btn-accion {
+  border: none;
+  padding: 0.4rem 0.8rem;
+  margin-right: 0.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.btn-accion.rol {
+  background-color: #007bff;
+}
+
+.btn-accion.rol:hover {
+  background-color: #0056b3;
+}
+
+.btn-accion.permiso {
+  background-color: #28a745;
+}
+
+.btn-accion.permiso:hover {
+  background-color: #1e7e34;
+}
+
+/* Botón de volver al menú (superior derecha) */
+.btn-volver-top {
+  background-color: #b22222;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-volver-top:hover {
+  background-color: #8b1a1a;
+}
+
+/* (opcional) Contenedor inferior si quisieras usarlo más tarde */
+.volver-container {
+  margin-top: 1.5rem;
+  text-align: right;
+}
