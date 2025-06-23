@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="page-header">
+    <h2><i class="fas fa-user-shield"></i> Gestión de Roles y Permisos</h2>
+    <button class="btn-volver-top" (click)="volver()">
+      <i class="fas fa-arrow-left"></i> Volver al Menú
+    </button>
+  </div>
+
+  <div class="card">
+    <table class="tabla-personas">
+      <thead>
+        <tr>
+          <th>N° Empleado</th>
+          <th>Nombre Completo</th>
+          <th>Correo</th>
+          <th>Departamento</th>
+          <th>Cargo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of empleados">
+          <td>{{ emp.numeroEmpleado }}</td>
+          <td>{{ emp.nombreCompleto }}</td>
+          <td>{{ emp.correo }}</td>
+          <td>{{ emp.departamento }}</td>
+          <td>{{ emp.cargo }}</td>
+          <td>
+            <button class="btn-accion rol" (click)="agregarRol(emp)" title="Agregar Rol">
+              <i class="fas fa-user-plus"></i> Agregar Rol
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
