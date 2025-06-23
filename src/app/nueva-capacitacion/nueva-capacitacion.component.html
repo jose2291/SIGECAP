@@ -1,0 +1,90 @@
+<div class="capacitacion-container" *ngIf="!mostrarFormulario">
+  <div class="capacitacion-header">
+    <h2><i class="fas fa-chalkboard-teacher"></i> Gestión de Capacitaciones</h2>
+    <button class="btn-volver" (click)="volver()">
+      <i class="fas fa-arrow-left"></i> Volver al Menú
+    </button>
+  </div>
+
+  <button class="btn-confirmar" (click)="mostrarSubpagina()">
+    <i class="fas fa-plus-circle"></i> Nueva Capacitación
+  </button>
+
+  <table class="tabla-capacitaciones" *ngIf="capacitaciones.length > 0">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Modalidad</th>
+        <th>Facilitador</th>
+        <th>Fecha y Hora</th>
+        <th>Duración</th>
+        <th>Salón</th>
+        <th>Participantes</th>
+        <th>Observaciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of capacitaciones">
+        <td>{{ c.nombre }}</td>
+        <td>{{ c.modalidad }}</td>
+        <td>{{ c.facilitador }}</td>
+        <td>{{ c.fechaHora }}</td>
+        <td>{{ c.duracion }} h</td>
+        <td>{{ c.salon }}</td>
+        <td>{{ c.participantes }}</td>
+        <td>{{ c.observaciones }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Subpágina dinámica -->
+<div class="subpagina" *ngIf="mostrarFormulario">
+  <h3><i class="fas fa-plus-circle"></i> Nueva Capacitación</h3>
+  <form (submit)="guardarCapacitacion()">
+    <label>Nombre:
+      <input [(ngModel)]="capacitacion.nombre" name="nombre" required />
+    </label>
+
+    <label>Modalidad:
+      <select [(ngModel)]="capacitacion.modalidad" name="modalidad">
+        <option *ngFor="let m of modalidades" [value]="m">{{ m }}</option>
+      </select>
+    </label>
+
+    <label>Facilitador:
+      <input [(ngModel)]="capacitacion.facilitador" name="facilitador" required />
+    </label>
+
+    <label>Fecha y Hora:
+      <input type="datetime-local" [(ngModel)]="capacitacion.fechaHora" name="fechaHora" required />
+    </label>
+
+    <label>Duración (horas):
+      <input type="number" min="1" max="8" [(ngModel)]="capacitacion.duracion" name="duracion" required />
+    </label>
+
+    <label>Salón:
+      <select [(ngModel)]="capacitacion.salon" name="salon">
+        <option *ngFor="let s of salones" [value]="s">{{ s }}</option>
+      </select>
+    </label>
+
+    <label>Participantes:
+      <input type="number" [(ngModel)]="capacitacion.participantes" name="participantes" required />
+    </label>
+
+    <label>Observaciones:
+      <textarea [(ngModel)]="capacitacion.observaciones" name="observaciones"></textarea>
+    </label>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-confirmar">
+        <i class="fas fa-check"></i> Guardar
+      </button>
+      <button type="button" class="btn-cancelar" (click)="cerrarSubpagina()">
+        <i class="fas fa-times"></i> Cancelar
+      </button>
+    </div>
+  </form>
+</div>
