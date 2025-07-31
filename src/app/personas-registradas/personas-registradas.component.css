@@ -65,6 +65,45 @@
   background-color: #f1f1f1;
 }
 
+/* Estado Activo/Inactivo */
+.estado.activo {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.estado.inactivo {
+  color: #b22222;
+  font-weight: bold;
+}
+
+/* Botones de acciones */
+.btn-accion {
+  border: none;
+  padding: 0.4rem 0.8rem;
+  margin-right: 0.3rem;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.btn-accion.ver {
+  background-color: #17a2b8; /* azul claro */
+}
+
+.btn-accion.ver:hover {
+  background-color: #117a8b;
+}
+
+.btn-accion.editar {
+  background-color: #ffc107; /* amarillo */
+  color: black;
+}
+
+.btn-accion.editar:hover {
+  background-color: #e0a800;
+}
+
 .volver-container {
   margin-top: 1.5rem;
   text-align: right;
