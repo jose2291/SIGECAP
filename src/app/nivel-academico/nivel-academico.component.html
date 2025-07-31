@@ -1,0 +1,30 @@
+<div class="header-top">
+  <button class="back-btn" (click)="volver()">
+    <i class="fas fa-arrow-left"></i> Volver A Personas Registradas
+  </button>
+  <h2>Nivel Académico</h2>
+</div>
+
+<div class="registro-container">
+  <form #nivelForm="ngForm" (ngSubmit)="guardar()">
+    <div class="form-group">
+      <label><i class="fas fa-graduation-cap"></i> Nivel Académico</label>
+      <input
+        type="text"
+        placeholder="Ej. Universitario Completo"
+        [(ngModel)]="nivelAcademico"
+        name="nivelAcademico"
+        required
+      />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="!nivelForm.valid">
+        <i class="fas fa-save"></i> Guardar
+      </button>
+      <button type="button" class="btn-limpiar" (click)="limpiar()">
+        <i class="fas fa-eraser"></i> Limpiar
+      </button>
+    </div>
+  </form>
+</div>
