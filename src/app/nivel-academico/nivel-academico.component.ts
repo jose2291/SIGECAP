@@ -27,6 +27,6 @@ export class NivelAcademicoComponent {
   }
 
   volver(): void {
-    this.router.navigate(['/personas-registradas']); // O ruta deseada
+    this.router.navigate(['/mantenimiento']); // O ruta deseada
   }
 }

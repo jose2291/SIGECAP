@@ -12,4 +12,10 @@ export class MantenimientoComponent {
   navegar(ruta: string): void {
     this.router.navigate([ruta]);
   }
+
+   volver(): void {
+    this.router.navigate(['/menu']); // O ruta deseada
+  }
 }
+
+

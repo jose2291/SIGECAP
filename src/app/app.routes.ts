@@ -13,6 +13,15 @@ import { PermisosComponent } from './permisos/permisos.component';
 import { VerEmpleadosComponent } from './ver-empleados/ver-empleados.component';
 import { NivelAcademicoComponent } from './nivel-academico/nivel-academico.component';
 import { MantenimientoComponent } from './mantenimiento/mantenimiento.component';
+import { ProfesionComponent } from './profesion/profesion.component';
+import { CargoComponent } from './cargo/cargo.component';
+import { DireccionComponent } from './direccion/direccion.component';
+import { DepartamentoComponent } from './departamento/departamento.component';
+import { SalonComponent } from './salon/salon.component';
+import { InstitucionComponent } from './institucion/institucion.component';
+import { TipoReunionComponent } from './tipo-reunion/tipo-reunion.component';
+import { RecursosComponent } from './recursos/recursos.component';
+import { RolComponent } from './rol/rol.component';
 
 
 
@@ -32,6 +41,15 @@ export const routes: Routes = [
   { path: 'ver-empleados', component: VerEmpleadosComponent },
   { path: 'nivel-academico', component: NivelAcademicoComponent },
   { path: 'mantenimiento', component: MantenimientoComponent },
+  { path: 'profesion', component: ProfesionComponent },
+  { path: 'cargo', component: CargoComponent },
+  { path: 'direccion', component: DireccionComponent },
+  { path: 'departamento', component: DepartamentoComponent },
+  { path: 'salon', component: SalonComponent },
+  { path: 'institucion', component: InstitucionComponent },
+  { path: 'tipo-reunion', component: TipoReunionComponent },
+  { path: 'recursos', component: RecursosComponent },
+  { path: 'rol', component: RolComponent },
 
 
   {
