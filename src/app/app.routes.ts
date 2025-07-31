@@ -11,6 +11,10 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { RolesComponent } from './roles/roles.component';
 import { PermisosComponent } from './permisos/permisos.component';
 import { VerEmpleadosComponent } from './ver-empleados/ver-empleados.component';
+import { NivelAcademicoComponent } from './nivel-academico/nivel-academico.component';
+import { MantenimientoComponent } from './mantenimiento/mantenimiento.component';
+
+
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -26,6 +30,10 @@ export const routes: Routes = [
   { path: 'nueva-capacitacion', component: NuevaCapacitacionComponent },
   { path: 'personas-registradas', component: PersonasRegistradasComponent },
   { path: 'ver-empleados', component: VerEmpleadosComponent },
+  { path: 'nivel-academico', component: NivelAcademicoComponent },
+  { path: 'mantenimiento', component: MantenimientoComponent },
+
+
   {
     path: 'agregar-roles',
     loadComponent: () => import('./agregar-roles/agregar-roles.component').then(m => m.AgregarRolesComponent)
