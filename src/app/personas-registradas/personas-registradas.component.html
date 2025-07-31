@@ -12,21 +12,36 @@
         <tr>
           <th>N° Empleado</th>
           <th>Nombre Completo</th>
-          <th>DNI</th>
           <th>Correo</th>
-          <th>Departamento</th>
           <th>Cargo</th>
+          <th>Fecha de Ingreso</th>
+          <th>Estado</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <!-- Ejemplo estático -->
-        <tr>
-          <td>EMP001</td>
-          <td>Juan Pérez</td>
-          <td>0801199012345</td>
-          <td>juanejemplo.com</td>
-          <td>Tecnología</td>
-          <td>Analista</td>
+        <tr *ngFor="let persona of personas">
+          <td>{{ persona.numeroEmpleado }}</td>
+          <td>
+            {{ persona.primerNombre }} {{ persona.segundoNombre }}
+            {{ persona.primerApellido }} {{ persona.segundoApellido }}
+          </td>
+          <td>{{ persona.correo }}</td>
+          <td>{{ persona.cargo }}</td>
+          <td>{{ formatFechaVista(persona.fechaIngreso) }}</td>
+          <td>
+            <span class="estado" [ngClass]="{'activo': persona.estado === 'Activo', 'inactivo': persona.estado !== 'Activo'}">
+              {{ persona.estado }}
+            </span>
+          </td>
+          <td>
+            <button class="btn-accion ver" title="Ver Detalles">
+              <i class="fas fa-eye"></i>
+            </button>
+            <button class="btn-accion editar" title="Editar">
+              <i class="fas fa-edit"></i>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
