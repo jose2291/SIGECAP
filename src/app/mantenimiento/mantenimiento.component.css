@@ -1,0 +1,56 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+.header-top {
+  background-color: #003366;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.header-top h2 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.registro-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.button-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.list-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #f4f4f4;
+  border: 2px solid #003366;
+  border-radius: 5px;
+  color: #003366;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.list-button i {
+  margin-right: 10px;
+}
+
+.list-button:hover {
+  background-color: #003366;
+  color: white;
+}
