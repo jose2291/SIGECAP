@@ -2,15 +2,15 @@
   <button class="back-btn" (click)="volverALista()">
     <i class="fas fa-arrow-left"></i> Volver a Personas Registradas
   </button>
-  <h2>Crear Operario</h2>
+  <h2>Crear Empleado</h2>
 </div>
 
 <div class="registro-container">
-  <form (ngSubmit)="registrarOperario()">
+  <form (ngSubmit)="registrarEmpleado()">
     <div class="form-group">
-      <label><i class="fas fa-id-badge"></i> Número de Empleado</label>
+      <label><i class="fas fa-id-badge"></i> Buscar por N° Empleado o Identidad</label>
       <div class="input-search">
-        <input type="text" [(ngModel)]="numeroEmpleado" name="numeroEmpleado" placeholder="Ingrese número de empleado" required>
+        <input type="text" [(ngModel)]="criterioBusqueda" name="criterioBusqueda" placeholder="EMP001 o DNI" required>
         <button type="button" class="search-btn" (click)="buscarEmpleado()">
           <i class="fas fa-search"></i>
         </button>
@@ -20,7 +20,7 @@
     <div *ngIf="empleadoEncontrado">
       <div class="form-group">
         <label><i class="fas fa-user"></i> Nombre Completo</label>
-        <input type="text" [value]="empleado.nombre" disabled>
+        <input type="text" [value]="empleado.nombreCompleto" disabled>
       </div>
 
       <div class="form-group">
@@ -39,15 +39,15 @@
       </div>
 
       <div class="form-group switch">
-        <label><i class="fas fa-toggle-on"></i> Activo</label>
+        <label><i class="fas fa-toggle-on"></i> Estado</label>
         <label class="switch-toggle">
-          <input type="checkbox" [(ngModel)]="empleado.activo" name="activo">
+          <input type="checkbox" [(ngModel)]="empleado.estado" name="estado">
           <span class="slider"></span>
         </label>
       </div>
 
       <div class="form-actions">
-        <button type="submit"><i class="fas fa-save"></i> Registrar</button>
+        <button type="submit"><i class="fas fa-save"></i> Registrar Empleado</button>
       </div>
     </div>
   </form>
