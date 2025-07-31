@@ -6,61 +6,124 @@
 </div>
 
 <div class="registro-container">
-  <form>
+  <form #registroForm="ngForm" (ngSubmit)="onSubmit()">
+    <!-- N° Empleado -->
     <div class="form-group">
-      <label><i class="fas fa-id-badge"></i> Número de Empleado</label>
-      <input type="text" placeholder="Ingrese número de empleado">
+      <label><i class="fas fa-id-badge"></i> N° Empleado</label>
+      <input type="text" placeholder="Ingrese número de empleado" [(ngModel)]="persona.numeroEmpleado" name="numeroEmpleado" required>
     </div>
 
+    <!-- DNI -->
     <div class="form-group">
       <label><i class="fas fa-id-card"></i> DNI</label>
-      <input type="text" placeholder="Ingrese DNI">
+      <input type="text" placeholder="Ingrese DNI" maxlength="13" [(ngModel)]="persona.dni" name="dni" required>
     </div>
 
+    <!-- Género -->
+    <div class="form-group">
+      <label><i class="fas fa-venus-mars"></i> Género</label>
+      <select [(ngModel)]="persona.genero" name="genero" required>
+        <option value="">Seleccione género</option>
+        <option value="F">Femenino</option>
+        <option value="M">Masculino</option>
+      </select>
+    </div>
+
+    <!-- Primer Nombre -->
     <div class="form-group">
       <label><i class="fas fa-user"></i> Primer Nombre</label>
-      <input type="text" placeholder="Ingrese primer nombre">
+      <input type="text" placeholder="Ingrese primer nombre" [(ngModel)]="persona.primerNombre" name="primerNombre" required>
     </div>
 
+    <!-- Segundo Nombre -->
     <div class="form-group">
       <label><i class="fas fa-user"></i> Segundo Nombre</label>
-      <input type="text" placeholder="Ingrese segundo nombre">
+      <input type="text" placeholder="Ingrese segundo nombre" [(ngModel)]="persona.segundoNombre" name="segundoNombre">
     </div>
 
+    <!-- Primer Apellido -->
     <div class="form-group">
       <label><i class="fas fa-user"></i> Primer Apellido</label>
-      <input type="text" placeholder="Ingrese primer apellido">
+      <input type="text" placeholder="Ingrese primer apellido" [(ngModel)]="persona.primerApellido" name="primerApellido" required>
     </div>
 
+    <!-- Segundo Apellido -->
     <div class="form-group">
       <label><i class="fas fa-user"></i> Segundo Apellido</label>
-      <input type="text" placeholder="Ingrese segundo apellido">
+      <input type="text" placeholder="Ingrese segundo apellido" [(ngModel)]="persona.segundoApellido" name="segundoApellido">
     </div>
 
+    <!-- Nivel Académico -->
+    <div class="form-group">
+      <label><i class="fas fa-graduation-cap"></i> Nivel Académico</label>
+      <input type="text" placeholder="Ej. Universitario Completo" [(ngModel)]="persona.nivelAcademico" name="nivelAcademico" required>
+    </div>
+
+    <!-- Profesión -->
+    <div class="form-group">
+      <label><i class="fas fa-briefcase"></i> Profesión</label>
+      <input type="text" placeholder="Ej. Ingeniería en Computación" [(ngModel)]="persona.profesion" name="profesion" required>
+    </div>
+
+    <!-- Cargo -->
+    <div class="form-group">
+      <label><i class="fas fa-user-tie"></i> Cargo</label>
+      <input type="text" placeholder="Ej. Especialista en Sistemas II" [(ngModel)]="persona.cargo" name="cargo" required>
+    </div>
+
+    <!-- Dirección del Puesto -->
+    <div class="form-group">
+      <label><i class="fas fa-building"></i> Dirección </label>
+      <input type="text" placeholder="Ej. Informática" [(ngModel)]="persona.direccionPuesto" name="direccionPuesto" required>
+    </div>
+
+    <!-- Departamento -->
+    <div class="form-group">
+      <label><i class="fas fa-sitemap"></i> Departamento</label>
+      <input type="text" placeholder="Ej. Informática" [(ngModel)]="persona.departamento" name="departamento" required>
+    </div>
+
+    <!-- Correo Electrónico -->
     <div class="form-group">
       <label><i class="fas fa-envelope"></i> Correo Electrónico</label>
-      <input type="email" placeholder="correo@ejemplo.com">
+      <input type="email" placeholder="csanchez@tsc.gob.hn" [(ngModel)]="persona.correo" name="correo" required>
     </div>
 
+    <!-- Teléfono -->
     <div class="form-group">
       <label><i class="fas fa-phone"></i> Teléfono</label>
-      <input type="text" placeholder="Ingrese número de teléfono">
+      <input type="tel" pattern="[0-9]*" placeholder="87563515" [(ngModel)]="persona.telefono" name="telefono" required>
     </div>
 
+    <!-- Fecha de Nacimiento -->
     <div class="form-group">
       <label><i class="fas fa-calendar"></i> Fecha de Nacimiento</label>
-      <input type="date">
+      <input type="date" [(ngModel)]="persona.fechaNacimiento" name="fechaNacimiento" required>
     </div>
 
+    <!-- Fecha de Ingreso -->
     <div class="form-group">
       <label><i class="fas fa-calendar-plus"></i> Fecha de Ingreso</label>
-      <input type="date">
+      <input type="date" [(ngModel)]="persona.fechaIngreso" name="fechaIngreso" required>
     </div>
 
-    <!-- Aquí puedes agregar selects para Género, Nivel Académico, Cargo, Departamento, Estado -->
+    <!-- Estado -->
+    <div class="form-group">
+      <label><i class="fas fa-toggle-on"></i> Estado</label>
+      <select [(ngModel)]="persona.estado" name="estado" required>
+        <option value="Activo" selected>Activo</option>
+        <option value="Inactivo">Inactivo</option>
+      </select>
+    </div>
 
+    <!-- Botones -->
     <div class="form-actions">
-      <button type="submit"><i class="fas fa-save"></i> Registrar</button>
+      <button type="submit" [disabled]="!registroForm.valid">
+        <i class="fas fa-save"></i> Registrar
+      </button>
+      <button type="button" class="btn-limpiar" (click)="limpiarCampos()">
+        <i class="fas fa-eraser"></i> Limpiar
+      </button>
     </div>
   </form>
 </div>

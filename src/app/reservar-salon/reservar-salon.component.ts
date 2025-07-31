@@ -12,20 +12,25 @@ import { FormsModule } from '@angular/forms';
 })
 export class ReservarSalonComponent implements OnInit, OnDestroy {
   dias: string[] = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
-  horas: string[] = [
-    '07:30', '08:30', '09:30', '10:30', '11:30',
-    '12:30', '13:30', '14:30', '15:30', '16:30', '17:30'
-  ];
   salones: string[] = ['Salón 1', 'Salón 2', 'Salón 3', 'Salón 4', 'Salón 5', 'Salón 6'];
+  accesoriosDisponibles: string[] = ['Data Show', 'Pizarra', 'Marcadores', 'Papel', 'Micrófono', 'Parlante', 'Lápices', 'Laptop'];
 
   mostrarFormulario = false;
+  mostrarSelectorAccesorios = false;
+
   reservas: any[] = [];
 
-  nuevaReserva = {
+  nuevaReserva: any = {
+    reservadoPor: '',
+    recursiva: 'No',
+    fechaUnica: '',
+    fechaTemporal: '',
+    fechas: [],
+    horaDesde: '',
+    horaHasta: '',
     salon: '',
-    dia: '',
-    hora: '',
-    tipo: ''
+    tipo: '',
+    accesoriosSeleccionados: {}
   };
 
   fechaHoraActual: string = '';
@@ -57,12 +62,37 @@ export class ReservarSalonComponent implements OnInit, OnDestroy {
 
   cerrarSubpagina(): void {
     this.mostrarFormulario = false;
-    this.nuevaReserva = { salon: '', dia: '', hora: '', tipo: '' };
+    this.mostrarSelectorAccesorios = false;
+    this.nuevaReserva = {
+      reservadoPor: '',
+      recursiva: 'No',
+      fechaUnica: '',
+      fechaTemporal: '',
+      fechas: [],
+      horaDesde: '',
+      horaHasta: '',
+      salon: '',
+      tipo: '',
+      accesoriosSeleccionados: {}
+    };
+  }
+
+  agregarFecha(): void {
+    if (this.nuevaReserva.fechaTemporal) {
+      this.nuevaReserva.fechas.push(this.nuevaReserva.fechaTemporal);
+      this.nuevaReserva.fechaTemporal = '';
+    }
   }
 
   crearReserva(): void {
-    if (this.nuevaReserva.salon && this.nuevaReserva.dia && this.nuevaReserva.hora && this.nuevaReserva.tipo) {
-      this.reservas.push({ ...this.nuevaReserva });
+    const datosReserva = {
+      ...this.nuevaReserva,
+      accesorios: Object.keys(this.nuevaReserva.accesoriosSeleccionados)
+        .filter(k => this.nuevaReserva.accesoriosSeleccionados[k])
+    };
+
+    if (datosReserva.salon && (datosReserva.fechaUnica || datosReserva.fechas.length > 0)) {
+      this.reservas.push(datosReserva);
       this.cerrarSubpagina();
     }
   }

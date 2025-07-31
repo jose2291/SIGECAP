@@ -2,7 +2,7 @@
   <div class="page-header">
     <h1><i class="fas fa-id-badge"></i> Empleados Registrados</h1>
     <button class="btn-registro" (click)="goToCrearEmpleado()">
-      <i class="fas fa-user-cog"></i> Crear Operario
+      <i class="fas fa-user-plus"></i> Crear Empleado
     </button>
   </div>
 
@@ -13,6 +13,9 @@
           <th>N° Empleado</th>
           <th>Nombre Completo</th>
           <th>Cargo</th>
+          <th>Departamento</th>
+          <th>Correo</th>
+          <th>Estado</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +23,13 @@
           <td>{{ emp.numeroEmpleado }}</td>
           <td>{{ emp.nombreCompleto }}</td>
           <td>{{ emp.cargo }}</td>
+          <td>{{ emp.departamento }}</td>
+          <td>{{ emp.correo }}</td>
+          <td>
+            <span [ngClass]="emp.activo ? 'activo' : 'inactivo'">
+              {{ emp.activo ? 'Activo' : 'Inactivo' }}
+            </span>
+          </td>
         </tr>
       </tbody>
     </table>
