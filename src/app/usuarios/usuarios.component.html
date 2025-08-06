@@ -16,7 +16,7 @@
           <th>Departamento</th>
           <th>Cargo</th>
           <th>Estado</th>
-          <th>Acción</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -34,9 +34,12 @@
               {{ emp.estado }}
             </span>
           </td>
-          <td>
+          <td class="acciones">
             <button class="btn-rol" (click)="irARoles(emp)" title="Ver Roles">
               <i class="fas fa-user-shield"></i>
+            </button>
+            <button class="btn-permisos" (click)="irAPermisos(emp)" title="Ver Permisos">
+              <i class="fas fa-key"></i>
             </button>
           </td>
         </tr>

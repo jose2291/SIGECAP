@@ -1,0 +1,33 @@
+<div class="recuperar-container">
+  <h2><i class="fas fa-key"></i> Recuperar Contraseña</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Correo electrónico</label>
+      <input type="email" [(ngModel)]="correo" name="correo" required />
+    </div>
+
+    <div class="form-group">
+      <label>Contraseña actual</label>
+      <input type="password" [(ngModel)]="contrasenaActual" name="contrasenaActual" required />
+    </div>
+
+    <div class="form-group">
+      <label>Nueva contraseña</label>
+      <input type="password" [(ngModel)]="nuevaContrasena" name="nuevaContrasena" required />
+      <small class="info">
+        Debe tener al menos 8 caracteres, una mayúscula y un número.
+      </small>
+    </div>
+
+  
+    <div *ngIf="error" class="error">{{ error }}</div>
+    <div *ngIf="mensaje" class="success">{{ mensaje }}</div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="!captchaValido">
+        <i class="fas fa-save"></i> Actualizar Contraseña
+      </button>
+    </div>
+  </form>
+</div>
