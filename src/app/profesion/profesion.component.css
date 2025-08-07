@@ -1,0 +1,100 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #003366;
+  color: white;
+  padding: 1rem 2rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.header-top h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.back-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.back-btn i {
+  margin-right: 0.5rem;
+}
+
+.registro-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #003366;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+button[type="submit"],
+.btn-limpiar {
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"] {
+  background-color: #003366;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: #0055a5;
+}
+
+.btn-limpiar {
+  background-color: #ffc107;
+  color: black;
+}
+
+.btn-limpiar:hover {
+  background-color: #e0a800;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
