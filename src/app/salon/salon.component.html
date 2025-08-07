@@ -1,1 +1,32 @@
-<p>salon works!</p>
+<div class="header-top">
+  <button class="back-btn" (click)="volver()">
+    <i class="fas fa-arrow-left"></i> Volver a Mantenimiento
+  </button>
+  <h2>Salón</h2>
+</div>
+
+<div class="registro-container">
+  <form (ngSubmit)="guardar()" #salonForm="ngForm">
+    <div class="form-group">
+      <label for="salon">Salón</label>
+      <input
+        type="text"
+        id="salon"
+        name="salon"
+        [(ngModel)]="salon"
+        required
+        placeholder="Ejemplo: Salón A, Auditorio Principal, Sala de Juntas..."
+      />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="!salonForm.form.valid">
+        <i class="fas fa-save"></i> Guardar
+      </button>
+      <button type="button" class="btn-limpiar" (click)="limpiar()">
+        <i class="fas fa-eraser"></i> Limpiar
+      </button>
+    </div>
+  </form>
+</div>
+
