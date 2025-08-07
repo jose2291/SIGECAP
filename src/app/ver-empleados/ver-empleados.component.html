@@ -15,7 +15,7 @@
           <th>Cargo</th>
           <th>Departamento</th>
           <th>Correo</th>
-          
+          <th>Estado</th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +25,11 @@
           <td>{{ emp.cargo }}</td>
           <td>{{ emp.departamento }}</td>
           <td>{{ emp.correo }}</td>
-          
+          <td>
+            <span [ngClass]="emp.activo ? 'activo' : 'inactivo'">
+              {{ emp.activo ? 'Activo' : 'Inactivo' }}
+            </span>
+          </td>
         </tr>
       </tbody>
     </table>
