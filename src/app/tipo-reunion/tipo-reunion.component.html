@@ -1,1 +1,32 @@
-<p>tipo-reunion works!</p>
+<div class="header-top">
+  <button class="back-btn" (click)="volver()">
+    <i class="fas fa-arrow-left"></i> Volver
+  </button>
+  <h2>Mantenimiento - Tipo de Reunión</h2>
+</div>
+
+<div class="registro-container">
+  <form (ngSubmit)="guardar()" #tipoReunionForm="ngForm">
+    <div class="form-group">
+      <label for="tipoReunion">Tipo de Reunión</label>
+      <input
+        type="text"
+        id="tipoReunion"
+        name="tipoReunion"
+        [(ngModel)]="tipoReunion"
+        required
+        placeholder="Ejemplo: Ordinaria, Extraordinaria, Planificación..."
+      />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="!tipoReunionForm.form.valid">
+        <i class="fas fa-save"></i> Guardar
+      </button>
+      <button type="button" class="btn-limpiar" (click)="limpiar()">
+        <i class="fas fa-eraser"></i> Limpiar
+      </button>
+    </div>
+  </form>
+</div>
+
