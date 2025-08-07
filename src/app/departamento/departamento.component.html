@@ -1,1 +1,32 @@
-<p>departamento works!</p>
+<div class="header-top">
+  <button class="back-btn" (click)="volver()">
+    <i class="fas fa-arrow-left"></i> Volver a Mantenimiento
+  </button>
+  <h2>Departamento</h2>
+</div>
+
+<div class="registro-container">
+  <form (ngSubmit)="guardar()" #departamentoForm="ngForm">
+    <div class="form-group">
+      <label for="departamento">Departamento</label>
+      <input
+        type="text"
+        id="departamento"
+        name="departamento"
+        [(ngModel)]="departamento"
+        required
+        placeholder="Ejemplo: Recursos Humanos, Finanzas, TI..."
+      />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="!departamentoForm.form.valid">
+        <i class="fas fa-save"></i> Guardar
+      </button>
+      <button type="button" class="btn-limpiar" (click)="limpiar()">
+        <i class="fas fa-eraser"></i> Limpiar
+      </button>
+    </div>
+  </form>
+</div>
+
