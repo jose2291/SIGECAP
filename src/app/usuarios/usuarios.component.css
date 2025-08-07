@@ -54,7 +54,6 @@
   padding: 0.75rem 1rem;
   text-align: left;
   border-bottom: 1px solid #ddd;
-  text-align: center;
 }
 
 .tabla-personas th {
@@ -66,7 +65,7 @@
   background-color: #f1f1f1;
 }
 
-/* Estado interactivo */
+/* Estado como texto interactivo */
 .estado {
   font-weight: bold;
   cursor: pointer;
@@ -86,37 +85,17 @@
   color: #b22222;
 }
 
-/* Botones de acción en la tabla */
-.acciones {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.acciones button {
-  padding: 0.4rem 0.6rem;
+/* Botón de roles */
+.btn-rol {
+  background-color: #0055a5;
+  color: white;
   border: none;
+  padding: 0.4rem 0.6rem;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-/* Botón de roles */
-.btn-rol {
-  background-color: #0055a5;
-  color: white;
-}
-
 .btn-rol:hover {
   background-color: #003366;
-}
-
-/* Botón de permisos */
-.btn-permisos {
-  background-color: #ffc107;
-  color: black;
-}
-
-.btn-permisos:hover {
-  background-color: #d4a006;
 }
