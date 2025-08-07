@@ -1,3 +1,8 @@
+/* Alinear imagen al centro */
+.alinear_Flex {
+  display: flex;
+ justify-content: center;
+}
 /* Navbar estilo encabezado */
 .header {
   background-color: #003366;
