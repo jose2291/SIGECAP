@@ -1,1 +1,32 @@
-<p>direccion works!</p>
+<div class="header-top">
+  <button class="back-btn" (click)="volver()">
+    <i class="fas fa-arrow-left"></i> Volver a Mantenimiento
+  </button>
+  <h2>Dirección</h2>
+</div>
+
+<div class="registro-container">
+  <form (ngSubmit)="guardar()" #direccionForm="ngForm">
+    <div class="form-group">
+      <label for="direccion">Dirección</label>
+      <textarea
+        id="direccion"
+        name="direccion"
+        [(ngModel)]="direccion"
+        required
+        rows="3"
+        placeholder="Ejemplo: Calle 5, Colonia Centro, Ciudad..."
+      ></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="!direccionForm.form.valid">
+        <i class="fas fa-save"></i> Guardar
+      </button>
+      <button type="button" class="btn-limpiar" (click)="limpiar()">
+        <i class="fas fa-eraser"></i> Limpiar
+      </button>
+    </div>
+  </form>
+</div>
+
