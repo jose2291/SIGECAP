@@ -20,9 +20,9 @@ import { DepartamentoComponent } from './departamento/departamento.component';
 import { SalonComponent } from './salon/salon.component';
 import { InstitucionComponent } from './institucion/institucion.component';
 import { TipoReunionComponent } from './tipo-reunion/tipo-reunion.component';
-import { RecursosComponent } from './recursos/recursos.component';
+import { RecursoComponent } from './recursos/recursos.component';
 import { RolComponent } from './rol/rol.component';
-import { RecuperarContrasenaComponent } from './recuperar-contrasena/recuperar-contrasena.component';
+
 
 
 export const routes: Routes = [
@@ -32,8 +32,8 @@ export const routes: Routes = [
   { path: 'menu', component: MenuPrincipalComponent },
   { path: 'registro-personas', component: RegistroPersonasComponent },
   { path: 'crear-empleado', component: CrearEmpleadoComponent },
-  { path: 'permisos/:numeroEmpleado', component: PermisosComponent },
-  { path: 'roles/:numeroEmpleado', component: RolesComponent },
+  { path: 'permisos', component: PermisosComponent },
+  { path: 'roles', component: RolesComponent },
   { path: 'usuarios', component: UsuariosComponent },
   { path: 'reservar-salon', component: ReservarSalonComponent },
   { path: 'nueva-capacitacion', component: NuevaCapacitacionComponent },
@@ -48,10 +48,11 @@ export const routes: Routes = [
   { path: 'salon', component: SalonComponent },
   { path: 'institucion', component: InstitucionComponent },
   { path: 'tipo-reunion', component: TipoReunionComponent },
-  { path: 'recursos', component: RecursosComponent },
+  { path: 'recursos', component: RecursoComponent },
   { path: 'rol', component: RolComponent },
-  { path: 'recuperar', component: RecuperarContrasenaComponent },
-
+  
+  
+  
 
   {
     path: 'agregar-roles',
