@@ -1,1 +1,32 @@
-<p>institucion works!</p>
+<div class="header-top">
+  <button class="back-btn" (click)="volver()">
+    <i class="fas fa-arrow-left"></i> Volver a Mantenimiento
+  </button>
+  <h2>Institución</h2>
+</div>
+
+<div class="registro-container">
+  <form (ngSubmit)="guardar()" #institucionForm="ngForm">
+    <div class="form-group">
+      <label for="institucion">Institución</label>
+      <input
+        type="text"
+        id="institucion"
+        name="institucion"
+        [(ngModel)]="institucion"
+        required
+        placeholder="Ejemplo: Universidad Nacional, Instituto Tecnológico..."
+      />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="!institucionForm.form.valid">
+        <i class="fas fa-save"></i> Guardar
+      </button>
+      <button type="button" class="btn-limpiar" (click)="limpiar()">
+        <i class="fas fa-eraser"></i> Limpiar
+      </button>
+    </div>
+  </form>
+</div>
+
