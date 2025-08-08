@@ -3,6 +3,19 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+interface Capacitacion {
+  nombre: string;
+  modalidad: string;
+  institucion: string;
+  facilitador: string;
+  coordinador: string;
+  fechaHora: string;  // ISO string de datetime-local
+  duracion: number;   // horas
+  salon: string;
+  participantes: number;
+  observaciones: string;
+}
+
 @Component({
   selector: 'app-nueva-capacitacion',
   standalone: true,
@@ -13,18 +26,20 @@ import { FormsModule } from '@angular/forms';
 export class NuevaCapacitacionComponent {
   mostrarFormulario = false;
 
-  capacitacion = {
+  capacitacion: Capacitacion = {
     nombre: '',
     modalidad: '',
+    institucion: '',
     facilitador: '',
+    coordinador: '',
     fechaHora: '',
-    duracion: '',
+    duracion: 1,
     salon: '',
     participantes: 0,
     observaciones: ''
   };
 
-  capacitaciones: any[] = [];
+  capacitaciones: Capacitacion[] = [];
 
   modalidades = ['Presencial', 'Virtual', 'Mixta'];
   salones = ['Salón 1', 'Salón 2', 'Salón 3', 'Salón 4', 'Salón 5', 'Salón 6'];
@@ -42,11 +57,13 @@ export class NuevaCapacitacionComponent {
   cerrarSubpagina(): void {
     this.mostrarFormulario = false;
     this.capacitacion = {
-      nombre: '',
+      nombre : '',
       modalidad: '',
+      institucion: '',
       facilitador: '',
+      coordinador: '',
       fechaHora: '',
-      duracion: '',
+      duracion: 1,
       salon: '',
       participantes: 0,
       observaciones: ''
@@ -54,6 +71,9 @@ export class NuevaCapacitacionComponent {
   }
 
   guardarCapacitacion(): void {
+    // Opcional: validación rápida
+    // if (!this.capacitacion.nombre || !this.capacitacion.modalidad || !this.capacitacion.facilitador) return;
+
     this.capacitaciones.push({ ...this.capacitacion });
     this.cerrarSubpagina();
   }

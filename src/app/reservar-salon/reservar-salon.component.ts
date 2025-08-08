@@ -2,11 +2,18 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ReservarSalonService } from '../services/reservar-salon.service';
+
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { CalendarOptions } from '@fullcalendar/core';
 
 @Component({
   selector: 'app-reservar-salon',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, FullCalendarModule],
   templateUrl: './reservar-salon.component.html',
   styleUrls: ['./reservar-salon.component.css']
 })
@@ -18,7 +25,8 @@ export class ReservarSalonComponent implements OnInit, OnDestroy {
   mostrarFormulario = false;
   mostrarSelectorAccesorios = false;
 
-  reservas: any[] = [];
+  fechaHoraActual: string = '';
+  intervalId: any;
 
   nuevaReserva: any = {
     reservadoPor: '',
@@ -33,14 +41,30 @@ export class ReservarSalonComponent implements OnInit, OnDestroy {
     accesoriosSeleccionados: {}
   };
 
-  fechaHoraActual: string = '';
-  intervalId: any;
+  calendarOptions: CalendarOptions = {
+    plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
+    initialView: 'dayGridMonth',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek'
+    },
+    events: [],
+    locale: 'es',
+  buttonText: {
+    today: 'Hoy',
+    month: 'Mes',
+    week: 'Semana',
+    day: 'Día'
+  }
+};
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private reservaService: ReservarSalonService) {}
 
   ngOnInit(): void {
     this.actualizarFechaHora();
     this.intervalId = setInterval(() => this.actualizarFechaHora(), 1000);
+    this.cargarReservas();
   }
 
   ngOnDestroy(): void {
@@ -85,28 +109,50 @@ export class ReservarSalonComponent implements OnInit, OnDestroy {
   }
 
   crearReserva(): void {
-    const datosReserva = {
-      ...this.nuevaReserva,
+    const reservaDTO = {
+      reservadoPor: this.nuevaReserva.reservadoPor,
+      recursiva: this.nuevaReserva.recursiva === 'Sí',
+      fechas: this.nuevaReserva.recursiva === 'Sí' ? this.nuevaReserva.fechas : [this.nuevaReserva.fechaUnica],
+      horaDesde: this.nuevaReserva.horaDesde,
+      horaHasta: this.nuevaReserva.horaHasta,
+      salon: this.nuevaReserva.salon,
+      tipo: this.nuevaReserva.tipo,
       accesorios: Object.keys(this.nuevaReserva.accesoriosSeleccionados)
         .filter(k => this.nuevaReserva.accesoriosSeleccionados[k])
     };
 
-    if (datosReserva.salon && (datosReserva.fechaUnica || datosReserva.fechas.length > 0)) {
-      this.reservas.push(datosReserva);
-      this.cerrarSubpagina();
-    }
+    this.reservaService.crearReserva(reservaDTO).subscribe({
+      next: () => {
+        this.cerrarSubpagina();
+        this.cargarReservas(); // Refrescar el calendario
+      },
+      error: err => console.error('Error al crear la reserva:', err)
+    });
   }
 
-  obtenerReserva(dia: string, hora: string): string {
-    const reserva = this.reservas.find(r => r.dia === dia && r.hora === hora);
-    return reserva ? `${reserva.salon}` : '';
-  }
+ cargarReservas(): void {
+  this.reservaService.obtenerReservas().subscribe((reservas: any[]) => {
+    this.calendarOptions.events = reservas.flatMap(reserva =>
+      reserva.recursiva
+        ? reserva.fechas.map((fecha: string) => {
+            const fechaLimpia = fecha.split('T')[0]; // ✅ elimina la hora
+            return {
+              title: `${reserva.tipo} - ${reserva.salon}`,
+              start: `${fechaLimpia}T${reserva.horaDesde}`,
+              end: `${fechaLimpia}T${reserva.horaHasta}`,
+              extendedProps: { reservadoPor: reserva.reservadoPor }
+            };
+          })
+        : reserva.fechaUnica
+        ? [{
+            title: `${reserva.tipo} - ${reserva.salon}`,
+            start: `${reserva.fechaUnica.split('T')[0]}T${reserva.horaDesde}`,
+            end: `${reserva.fechaUnica.split('T')[0]}T${reserva.horaHasta}`,
+            extendedProps: { reservadoPor: reserva.reservadoPor }
+          }]
+        : []
+    );
+  });
+}
 
-  getClaseReserva(dia: string, hora: string): string {
-    const reserva = this.reservas.find(r => r.dia === dia && r.hora === hora);
-    if (!reserva) return '';
-    if (reserva.tipo === 'formacion') return 'formacion';
-    if (reserva.tipo === 'reunion') return 'reunion';
-    return 'otro';
-  }
 }
