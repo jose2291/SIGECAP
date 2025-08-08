@@ -22,7 +22,7 @@ import { InstitucionComponent } from './institucion/institucion.component';
 import { TipoReunionComponent } from './tipo-reunion/tipo-reunion.component';
 import { RecursoComponent } from './recursos/recursos.component';
 import { RolComponent } from './rol/rol.component';
-
+import { RecuperarContrasenaComponent } from './recuperar-contrasena/recuperar-contrasena.component';
 
 
 export const routes: Routes = [
@@ -49,6 +49,7 @@ export const routes: Routes = [
   { path: 'institucion', component: InstitucionComponent },
   { path: 'tipo-reunion', component: TipoReunionComponent },
   { path: 'recursos', component: RecursoComponent },
+  { path: 'recuperar', component: RecuperarContrasenaComponent },
   { path: 'rol', component: RolComponent },
   
   
