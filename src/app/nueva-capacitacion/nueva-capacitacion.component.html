@@ -15,7 +15,9 @@
       <tr>
         <th>Nombre</th>
         <th>Modalidad</th>
+        <th>Institución</th>
         <th>Facilitador</th>
+        <th>Coordinador</th>
         <th>Fecha y Hora</th>
         <th>Duración</th>
         <th>Salón</th>
@@ -27,7 +29,9 @@
       <tr *ngFor="let c of capacitaciones">
         <td>{{ c.nombre }}</td>
         <td>{{ c.modalidad }}</td>
+        <td>{{ c.institucion }}</td>
         <td>{{ c.facilitador }}</td>
+        <td>{{ c.coordinador }}</td>
         <td>{{ c.fechaHora }}</td>
         <td>{{ c.duracion }} h</td>
         <td>{{ c.salon }}</td>
@@ -52,8 +56,16 @@
       </select>
     </label>
 
+    <label>Institución:
+      <input [(ngModel)]="capacitacion.institucion" name="institucion" required />
+    </label>
+
     <label>Facilitador:
       <input [(ngModel)]="capacitacion.facilitador" name="facilitador" required />
+    </label>
+
+    <label>Coordinador:
+      <input [(ngModel)]="capacitacion.coordinador" name="coordinador" required />
     </label>
 
     <label>Fecha y Hora:
