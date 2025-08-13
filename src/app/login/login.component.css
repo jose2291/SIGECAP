@@ -1,9 +1,10 @@
-/* Alinear imagen al centro */
-.alinear_Flex {
-  display: flex;
- justify-content: center;
+body {
+  background: linear-gradient(to right, #003366, #0055a5);
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
 }
-/* Navbar estilo encabezado */
+
+/* Encabezado */
 .header {
   background-color: #003366;
   color: white;
@@ -11,79 +12,130 @@
   justify-content: space-between;
   padding: 1rem 2rem;
   align-items: center;
-  font-family: 'Segoe UI', sans-serif;
 }
 
 .header .logo {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
 .nav a {
   color: white;
-  margin-left: 1rem;
   text-decoration: none;
   font-weight: 500;
 }
 
-/* Estilo login */
+/* Contenedor login */
 .login-container {
-  max-width: 400px;
-  margin: 5rem auto;
-  padding: 2rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  margin: 4rem auto;
+  padding: 3rem 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   background-color: white;
-  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.login-container img {
+  max-width: 250px;
+  display: block;
+  height: auto;
+  margin: 0 auto 1.5rem auto;
 }
 
 .login-container h2 {
-  text-align: center;
   color: #003366;
-  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  margin-bottom: 0.9rem;
 }
 
-.form-group {
-  margin-bottom: 1.25rem;
+/* Inputs con iconos */
+.icon-input {
+  position: relative;
+  margin-bottom: 1rem;
 }
 
-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #333;
+.icon-input i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
 }
 
-input {
+.icon-input input {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.9rem 0.9rem 0.9rem 2.5rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-.form-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1rem;
+.icon-input input:focus {
+  border-color: #0055a5;
+  box-shadow: 0 0 5px rgba(0, 85, 165, 0.5);
+  outline: none;
 }
 
+/* Botón */
 button {
-  background-color: #003366;
-  color: white;
-  padding: 0.5rem 1rem;
+  width: 100%;
+  background: linear-gradient(90deg, #003366, #0055a5);
+  color: #fff;
+  padding: 0.95rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   border: none;
-  border-radius: 4px;
+  border-radius: 50px; /* <- forma de píldora */
   cursor: pointer;
+  margin-top: 1rem;
+  transition: transform .2s ease, box-shadow .3s ease;
+  box-shadow: 0 0 15px rgba(0, 85, 165, 0.5); /* brillo inicial */
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255,255,255,0.4);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+
+button:hover::before {
+  left: 150%; /* recorre el botón */
 }
 
 button:hover {
-  background-color: #0055a5;
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(0, 85, 165, 0.7);
 }
 
+/* Link recuperar */
 .forgot-password {
-  font-size: 0.9rem;
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.95rem;
   color: #0055a5;
-  text-decoration: underline;
-  cursor: pointer;
+  text-decoration: none;
 }
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
