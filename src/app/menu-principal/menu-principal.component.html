@@ -1,48 +1,68 @@
 <div class="layout">
   <aside class="sidebar">
-    <div class="logo">Menú Principal</div>
+    <div class="sidebar__brand">
+      <div class="brand__title">Menú Principal</div>
+      <!-- <img src="assets/img/LOGO TSC 2024_Mesa de trabajo.png" alt="TSC" class="brand__img"> -->
+    </div>
 
-    <nav class="menu">
-      <a (click)="navigateTo('/personas-registradas')">
-        <i class="fas fa-user-plus"></i> Registro de Personas
+    <nav class="menu" aria-label="Menú principal">
+      <img src="assets/img/LOGO TSC 2024_Mesa de trabajo.png" alt="TSC" class="d-block mx-auto mt-3" alt="Logo" style="width: 70%; height: auto;">
+      <a (click)="navigateTo('/personas-registradas')" class="menu__item">
+        <i class="fas fa-user-plus"></i>
+        <span>Registro de Personas</span>
       </a>
-      <a (click)="navigateTo('/reservar-salon')">
-        <i class="fas fa-calendar-alt"></i> Reservar Salón
+      <a (click)="navigateTo('/reservar-salon')" class="menu__item">
+        <i class="fas fa-calendar-alt"></i>
+        <span>Reservar Salón</span>
       </a>
-      <a (click)="navigateTo('/nueva-capacitacion')">
-        <i class="fas fa-chalkboard-teacher"></i> Nueva Capacitación
+      <a (click)="navigateTo('/nueva-capacitacion')" class="menu__item">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <span>Nueva Capacitación</span>
       </a>
-      <a (click)="navigateTo('/ver-empleados')">
-        <i class="fas fa-user-cog"></i> Crear Facilitador
+      <a (click)="navigateTo('/ver-empleados')" class="menu__item">
+        <i class="fas fa-user-cog"></i>
+        <span>Crear Facilitador</span>
       </a>
 
       <div class="dropdown">
-        <div class="dropdown-toggle" (click)="toggleSubmenu()">
-          <i class="fas fa-shield-alt"></i> Seguridad
-          <i [class.fa-chevron-down]="!submenuOpen" [class.fa-chevron-up]="submenuOpen" class="fas"></i>
-        </div>
-        <div class="submenu" [class.show]="submenuOpen">
-          <a (click)="navigateTo('/roles')">
-            <i class="fas fa-user-lock"></i> Roles y Permisos
+        <button
+          type="button"
+          class="dropdown-toggle"
+          (click)="toggleSubmenu()"
+          [attr.aria-expanded]="submenuOpen"
+          aria-controls="seguridad-submenu">
+          <span><i class="fas fa-shield-alt"></i> Seguridad</span>
+          <i class="fas" [ngClass]="submenuOpen ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+        </button>
+
+        <div class="submenu" [class.show]="submenuOpen" id="seguridad-submenu">
+          <a (click)="navigateTo('/roles')" class="menu__item submenu__item">
+            <i class="fas fa-user-lock"></i>
+            <span>Roles y Permisos</span>
           </a>
-          <a (click)="navigateTo('/usuarios')">
-            <i class="fas fa-users"></i> Usuarios
+          <a (click)="navigateTo('/usuarios')" class="menu__item submenu__item">
+            <i class="fas fa-users"></i>
+            <span>Usuarios</span>
           </a>
-           <a (click)="navigateTo('/mantenimiento')">
-            <i class="fas fa-tools"></i> Mantenimiento
-           </a>
-      
+          <a (click)="navigateTo('/mantenimiento')" class="menu__item submenu__item">
+            <i class="fas fa-tools"></i>
+            <span>Mantenimiento</span>
+          </a>
         </div>
       </div>
     </nav>
 
-    <a class="logout" (click)="logout()">
+    <button class="logout" (click)="logout()">
       <i class="fas fa-sign-out-alt"></i> Cerrar sesión
-    </a>
+    </button>
   </aside>
 
   <main class="content">
-    <h1>Bienvenidos al Sistema de Gestión de Capacitación</h1>
-    <img src="assets/img/LOGO TSC 2024_Mesa de trabajo.png" class="d-block mx-auto mt-3" alt="Logo" style="width: 30%; height: auto;">
+    <div class="welcome-card">
+      <h1>Sistema de Gestión de Capacitación</h1>
+      <img src="assets/img/SIGECAP.png" alt="TSC" class="d-block mx-auto mt-3" alt="Logo" style="width: 50%; height: auto;">
+    </div>
   </main>
 </div>
+
+
