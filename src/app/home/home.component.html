@@ -1,73 +1,55 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>SIGECAP</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<header class="header">
+  <div class="header__inner">
+    <div class="logo">
+      <!-- Si tienes el logo en imagen, descomenta la línea siguiente -->
+     <!--<img src="/assets/img/LOGO TSC 2024_Mesa de trabajo.png" alt="TSC" class="logo__img">-->
+      <span class="logo__text">SIGECAP</span>
+    </div>
 
-</head>
-<body>
-  <header class="topbar">
-    <div class="brand">SIGECAP</div>
-    <nav class="nav">
-      <a href="#">Inicio</a>
-      <a href="#">Iniciar sesión</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#" class="nav__link">Inicio</a>
+      <a href="/login" class="nav__link">Iniciar sesión</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <section class="hero">
-    <div>
-      <img src="assets/img/LOGO TSC 2024_Mesa de trabajo.png" class="d-block mx-auto mt-3" alt="Logo" style="width: 15%; height: auto;">
-      <h1>Bienvenido al SIGECAP</h1>
-      <p>Gestiona y participa en los eventos de formación institucional del Tribunal Superior de Cuentas.</p>
-    </div>
-  </section>
-
-  <!-- Separador ondulado del mismo color -->
-  <svg class="wave" viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0,64 C240,0 480,0 720,64 C960,128 1200,128 1440,64 L1440,80 L0,80 Z" fill="var(--primary)"/>
-  </svg>
-
-  <main class="wrap">
-    <div class="cards-container">
-  <div class="info-card">
-    <div class="info-card__icon">
-      <img src="assets/img/capacitacion.png" alt="Capacitaciones">
-    </div>
-    <div>
-      <h4 class="info-card__title">Capacitaciones</h4>
-      <p class="info-card__desc">Explora, inscríbete y da seguimiento a tus procesos formativos en un solo lugar.</p>
+<section class="hero" role="banner" aria-label="Bienvenida">
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <img src="assets/img/LOGO TSC 2024_Mesa de trabajo.png" class="d-block mx-auto mt-3" alt="Logo" style="width: 15%; height: auto;">
+     <h1 class="hero__title">Bienvenido a SIGECAP</h1>
+    
+    <div class="hero__actions">
+      <a href="/login" class="btn btn--primary btn--glow">Ingresar</a>
     </div>
   </div>
+</section>
 
-  <div class="info-card">
-    <div class="info-card__icon">
-      <img src="assets/img/capacitacion.png" alt="Capacitaciones">
-    </div>
-    <div>
-      <h4 class="info-card__title">Capacitaciones</h4>
-      <p class="info-card__desc">Explora, inscríbete y da seguimiento a tus procesos formativos en un solo lugar.</p>
+<section id="features" class="features" aria-label="Funciones principales">
+  <div class="container">
+    <div class="features__grid">
+      <article class="card">
+        <h3 class="card__title">Capacitaciones</h3>
+        <p class="card__text">Gestiona y participa en los eventos de formación institucional.</p>
+      </article>
+
+      <article class="card">
+        <h3 class="card__title">Historial</h3>
+        <p class="card__text">Consulta tu progreso y constancias emitidas por el TSC.</p>
+      </article>
+    
+       <article class="card">
+        <h3 class="card__title">Reportes</h3>
+        <p class="card__text">Indicadores y estadísticas para la toma de decisiones.</p>
+      </article>
+    
     </div>
   </div>
-
-  <div class="info-card">
-    <div class="info-card__icon">
-      <img src="assets/img/capacitacion.png" alt="Capacitaciones">
-    </div>
-    <div>
-      <h4 class="info-card__title">Capacitaciones</h4>
-      <p class="info-card__desc">Explora, inscríbete y da seguimiento a tus procesos formativos en un solo lugar.</p>
-    </div>
+</section>
+<footer class="footer">
+  <div class="container">
+    <p>© 2024 Gerencia de Informática Tribunal Superior de Cuentas.</p>
   </div>
-</div>
+</footer>
 
-
-  </main>
-  <footer>
-    © 2025 Gerencia de Informática Tribunal Superior de Cuentas.
-  </footer>
-</body>
-</html>
 
