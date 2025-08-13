@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'] // plural y en arreglo
+  styleUrl: './home.component.css'
 })
 export class HomeComponent {
   constructor(private router: Router) {}
@@ -15,4 +15,5 @@ export class HomeComponent {
     this.router.navigate(['/login']);
   }
 }
+
 
