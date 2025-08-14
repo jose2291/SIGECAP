@@ -1,14 +1,14 @@
 <div class="header-top">
-  <button class="back-btn" (click)="volver()">
-    <i class="fas fa-arrow-left"></i> Volver a Mantenimiento
-  </button>
-  <h2>Recurso</h2>
+  <button class="back-btn" (click)="volver()" aria-label="Volver a Mantenimiento">
+  <i class="fas fa-arrow-left"></i> Volver a Mantenimiento
+</button>
+  <h2>Recursos Técnologicos</h2>
 </div>
 
 <div class="registro-container">
   <form (ngSubmit)="guardar()" #recursoForm="ngForm">
     <div class="form-group">
-      <label for="recurso">Recurso</label>
+      <label for="recurso">Recursos</label>
       <input
         type="text"
         id="recurso"
