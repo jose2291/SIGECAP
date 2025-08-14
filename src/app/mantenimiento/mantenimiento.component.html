@@ -1,39 +1,83 @@
-<div class="header-top">
-    
-  <h2><i class="fas fa-tools"></i> Área de Mantenimiento</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Activa el tema glassmorphism a nivel de componente con un wrapper -->
+<div class="theme-glass">
+
+  <!-- Encabezado -->
+  <header class="header-top">
+    <h2><i class="fas fa-tools"></i> Área de Mantenimiento</h2>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="page-wrap">
+    <section class="registro-container">
+      <div class="button-list">
+
+        <button class="list-button" (click)="navegar('/nivel-academico')">
+          <span class="icon"><i class="fas fa-graduation-cap"></i></span>
+          <span class="text">Nivel Académico</span>
+          <i class="fas fa-chevron-right tail"></i>
+        </button>
+
+        <button class="list-button" (click)="navegar('/profesion')">
+          <span class="icon"><i class="fas fa-briefcase"></i></span>
+          <span class="text">Profesión</span>
+          <i class="fas fa-chevron-right tail"></i>
+        </button>
+
+        <button class="list-button" (click)="navegar('/cargo')">
+          <span class="icon"><i class="fas fa-user-tie"></i></span>
+          <span class="text">Cargo</span>
+          <i class="fas fa-chevron-right tail"></i>
+        </button>
+
+        <button class="list-button" (click)="navegar('/direccion')">
+          <span class="icon"><i class="fas fa-building"></i></span>
+          <span class="text">Dirección</span>
+          <i class="fas fa-chevron-right tail"></i>
+        </button>
+
+        <button class="list-button" (click)="navegar('/departamento')">
+          <span class="icon"><i class="fas fa-sitemap"></i></span>
+          <span class="text">Departamento</span>
+          <i class="fas fa-chevron-right tail"></i>
+        </button>
+
+        <button class="list-button" (click)="navegar('/salon')">
+          <span class="icon"><i class="fas fa-door-open"></i></span>
+          <span class="text">Salón</span>
+          <i class="fas fa-chevron-right tail"></i>
+        </button>
+
+        <button class="list-button" (click)="navegar('/institucion')">
+          <span class="icon"><i class="fas fa-university"></i></span>
+          <span class="text">Institución</span>
+          <i class="fas fa-chevron-right tail"></i>
+        </button>
+
+        <button class="list-button" (click)="navegar('/tipo-reunion')">
+          <span class="icon"><i class="fas fa-comments"></i></span>
+          <span class="text">Tipo de Reunión</span>
+          <i class="fas fa-chevron-right tail"></i>
+        </button>
+
+        <button class="list-button" (click)="navegar('/recursos')">
+          <span class="icon"><i class="fas fa-boxes"></i></span>
+          <span class="text">Recursos</span>
+          <i class="fas fa-chevron-right tail"></i>
+        </button>
+
+        <button class="list-button" (click)="navegar('/rol')">
+          <span class="icon"><i class="fas fa-user-shield"></i></span>
+          <span class="text">Roles</span>
+          <i class="fas fa-chevron-right tail"></i>
+        </button>
+
+      </div>
+
+      <!-- Botón volver opcional -->
+    </section>
+  </main>
+
 </div>
 
-<div class="registro-container">
-  <div class="button-list">
-    <button class="list-button" (click)="navegar('/nivel-academico')">
-      <i class="fas fa-graduation-cap"></i> Nivel Académico
-    </button>
-    <button class="list-button" (click)="navegar('/profesion')">
-      <i class="fas fa-briefcase"></i> Profesión
-    </button>
-    <button class="list-button" (click)="navegar('/cargo')">
-      <i class="fas fa-user-tie"></i> Cargo
-    </button>
-    <button class="list-button" (click)="navegar('/direccion')">
-      <i class="fas fa-building"></i> Dirección
-    </button>
-    <button class="list-button" (click)="navegar('/departamento')">
-      <i class="fas fa-sitemap"></i> Departamento
-    </button>
-    <button class="list-button" (click)="navegar('/salon')">
-      <i class="fas fa-door-open"></i> Salón
-    </button>
-    <button class="list-button" (click)="navegar('/institucion')">
-      <i class="fas fa-university"></i> Institución
-    </button>
-    <button class="list-button" (click)="navegar('/tipo-reunion')">
-      <i class="fas fa-comments"></i> Tipo de Reunión
-    </button>
-    <button class="list-button" (click)="navegar('/recursos')">
-      <i class="fas fa-boxes"></i> Recursos
-    </button>
-    <button class="list-button" (click)="navegar('/rol')">
-      <i class="fas fa-user-shield"></i> Roles
-    </button>
-  </div>
-</div>
+
