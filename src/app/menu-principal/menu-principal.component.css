@@ -133,7 +133,7 @@ body{
   background: rgba(255,255,255,0.10);
 }
 
-/* Logout */
+/* Cerrar Sesión */
 .logout{
   margin: 1rem;
   padding: .8rem 1rem;
@@ -144,6 +144,7 @@ body{
   font-weight: 700;
   cursor: pointer;
   transition: filter .2s ease, transform .1s ease;
+  margin-top: auto;
 }
 .logout:hover{ filter: brightness(1.08); }
 .logout:active{ transform: translateY(1px); }
