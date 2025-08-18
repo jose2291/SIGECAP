@@ -12,7 +12,7 @@
       <input
         type="text"
         placeholder="Ej. Universitario Completo"
-        [(ngModel)]="nivelAcademico"
+        [(ngModel)]="nuevoNivel.descripcion"
         name="nivelAcademico"
         required
       />
@@ -27,4 +27,28 @@
       </button>
     </div>
   </form>
+</div>
+
+<!-- ✅ Tabla para mostrar niveles guardados -->
+<div class="tabla-container" *ngIf="niveles.length > 0">
+  <h3>Listado de Niveles Académicos</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let nivel of niveles">
+        <td>{{ nivel.id }}</td>
+        <td>{{ nivel.descripcion }}</td>
+        <td>
+          <button (click)="editar(nivel)">✏️ Editar</button>
+          <button (click)="eliminar(nivel.id!)">🗑️ Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

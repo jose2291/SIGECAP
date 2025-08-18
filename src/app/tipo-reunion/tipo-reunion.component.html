@@ -1,32 +1,41 @@
-<div class="header-top">
-  <button class="back-btn" (click)="volver()">
-    <i class="fas fa-arrow-left"></i> Volver
-  </button>
-  <h2>Mantenimiento - Tipo de Reunión</h2>
-</div>
+<div class="container">
+  <h2>Gestión de Tipos de Reunión</h2>
 
-<div class="registro-container">
-  <form (ngSubmit)="guardar()" #tipoReunionForm="ngForm">
-    <div class="form-group">
-      <label for="tipoReunion">Tipo de Reunión</label>
-      <input
-        type="text"
-        id="tipoReunion"
-        name="tipoReunion"
-        [(ngModel)]="tipoReunion"
-        required
-        placeholder="Ejemplo: Ordinaria, Extraordinaria, Planificación..."
-      />
-    </div>
-
-    <div class="form-actions">
-      <button type="submit" [disabled]="!tipoReunionForm.form.valid">
-        <i class="fas fa-save"></i> Guardar
-      </button>
-      <button type="button" class="btn-limpiar" (click)="limpiar()">
-        <i class="fas fa-eraser"></i> Limpiar
-      </button>
-    </div>
+  <!-- Formulario -->
+  <form (ngSubmit)="guardar()" class="form-inline">
+    <input
+      type="text"
+      [(ngModel)]="nuevoTipo.Descripcion"
+      name="Descripcion"
+      placeholder="Descripción"
+      required
+    />
+    <button type="submit">
+      {{ editando ? 'Actualizar' : 'Guardar' }}
+    </button>
+    <button type="button" *ngIf="editando" (click)="limpiar()">Cancelar</button>
   </form>
-</div>
 
+  <hr />
+
+  <!-- Tabla -->
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tipo of tipos">
+        <td>{{ tipo.Id }}</td>
+        <td>{{ tipo.Descripcion }}</td>
+        <td>
+          <button (click)="editar(tipo)">Editar</button>
+          <button (click)="eliminar(tipo.Id!)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,26 +1,25 @@
 <div class="header-top">
   <button class="back-btn" (click)="volver()">
-    <i class="fas fa-arrow-left"></i> Volver a Mantenimiento
+    <i class="fas fa-arrow-left"></i> Volver A Mantenimiento
   </button>
   <h2>Departamento</h2>
 </div>
 
 <div class="registro-container">
-  <form (ngSubmit)="guardar()" #departamentoForm="ngForm">
+  <form #form="ngForm" (ngSubmit)="guardar()">
     <div class="form-group">
-      <label for="departamento">Departamento</label>
+      <label><i class="fas fa-building"></i> Departamento</label>
       <input
         type="text"
-        id="departamento"
-        name="departamento"
-        [(ngModel)]="departamento"
+        placeholder="Ej. Recursos Humanos"
+        [(ngModel)]="nuevoDepartamento.nombre"
+        name="nombre"
         required
-        placeholder="Ejemplo: Recursos Humanos, Finanzas, TI..."
       />
     </div>
 
     <div class="form-actions">
-      <button type="submit" [disabled]="!departamentoForm.form.valid">
+      <button type="submit" [disabled]="!form.valid">
         <i class="fas fa-save"></i> Guardar
       </button>
       <button type="button" class="btn-limpiar" (click)="limpiar()">
@@ -30,3 +29,25 @@
   </form>
 </div>
 
+<div class="tabla-container" *ngIf="departamentos.length > 0">
+  <h3>Listado de Departamentos</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of departamentos">
+        <td>{{ d.id }}</td>
+        <td>{{ d.nombre }}</td>
+        <td>
+          <button (click)="editar(d)">✏️ Editar</button>
+          <button (click)="eliminar(d.id!)">🗑️ Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

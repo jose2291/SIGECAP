@@ -11,8 +11,8 @@
       <label><i class="fas fa-briefcase"></i> Profesión</label>
       <input
         type="text"
-        placeholder="Ej. Ingeniero Industrial"
-        [(ngModel)]="profesion"
+        placeholder="Ej. Ingeniero Civil"
+        [(ngModel)]="nuevaProfesion.descripcion"
         name="profesion"
         required
       />
@@ -29,6 +29,30 @@
   </form>
 </div>
 
-
-
-
+<!-- ✅ Tabla de profesiones -->
+<div class="tabla-container" *ngIf="profesiones.length > 0">
+  <h3>Listado de Profesiones</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let profesion of profesiones">
+        <td>{{ profesion.id }}</td>
+        <td>{{ profesion.descripcion }}</td>
+        <td>
+          <button class="btn-editar" (click)="editar(profesion)">
+            <i class="fas fa-edit"></i> Editar
+          </button>
+          <button class="btn-eliminar" (click)="eliminar(profesion.id!)">
+            <i class="fas fa-trash"></i> Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

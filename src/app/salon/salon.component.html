@@ -1,26 +1,25 @@
 <div class="header-top">
   <button class="back-btn" (click)="volver()">
-    <i class="fas fa-arrow-left"></i> Volver a Mantenimiento
+    <i class="fas fa-arrow-left"></i> Volver A Mantenimiento
   </button>
-  <h2>Salón</h2>
+  <h2>Gestión de Salones</h2>
 </div>
 
 <div class="registro-container">
-  <form (ngSubmit)="guardar()" #salonForm="ngForm">
+  <form #salonForm="ngForm" (ngSubmit)="guardar()">
     <div class="form-group">
-      <label for="salon">Salón</label>
+      <label><i class="fas fa-door-open"></i> Nombre del Salón</label>
       <input
         type="text"
-        id="salon"
-        name="salon"
-        [(ngModel)]="salon"
+        placeholder="Ej. Salón Principal"
+        [(ngModel)]="nuevoSalon.nombre"
+        name="nombreSalon"
         required
-        placeholder="Ejemplo: Salón A, Auditorio Principal, Sala de Juntas..."
       />
     </div>
 
     <div class="form-actions">
-      <button type="submit" [disabled]="!salonForm.form.valid">
+      <button type="submit" [disabled]="!salonForm.valid">
         <i class="fas fa-save"></i> Guardar
       </button>
       <button type="button" class="btn-limpiar" (click)="limpiar()">
@@ -30,3 +29,26 @@
   </form>
 </div>
 
+<!-- ✅ Tabla para mostrar salones -->
+<div class="tabla-container" *ngIf="salones.length > 0">
+  <h3>Listado de Salones</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let salon of salones">
+        <td>{{ salon.id }}</td>
+        <td>{{ salon.nombre }}</td>
+        <td>
+          <button (click)="editar(salon)">✏️ Editar</button>
+          <button (click)="eliminar(salon.id!)">🗑️ Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

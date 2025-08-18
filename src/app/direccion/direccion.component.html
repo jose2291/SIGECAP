@@ -1,26 +1,25 @@
 <div class="header-top">
   <button class="back-btn" (click)="volver()">
-    <i class="fas fa-arrow-left"></i> Volver a Mantenimiento
+    <i class="fas fa-arrow-left"></i> Volver A Mantenimiento
   </button>
   <h2>Dirección</h2>
 </div>
 
 <div class="registro-container">
-  <form (ngSubmit)="guardar()" #direccionForm="ngForm">
+  <form #direccionForm="ngForm" (ngSubmit)="guardar()">
     <div class="form-group">
-      <label for="direccion">Dirección</label>
-      <textarea
-        id="direccion"
+      <label><i class="fas fa-map-marker-alt"></i> Dirección</label>
+      <input
+        type="text"
+        placeholder="Ej. Av. Siempre Viva 742"
+        [(ngModel)]="nuevaDireccion.descripcion"
         name="direccion"
-        [(ngModel)]="direccion"
         required
-        rows="3"
-        placeholder="Ejemplo: Calle 5, Colonia Centro, Ciudad..."
-      ></textarea>
+      />
     </div>
 
     <div class="form-actions">
-      <button type="submit" [disabled]="!direccionForm.form.valid">
+      <button type="submit" [disabled]="!direccionForm.valid">
         <i class="fas fa-save"></i> Guardar
       </button>
       <button type="button" class="btn-limpiar" (click)="limpiar()">
@@ -30,3 +29,26 @@
   </form>
 </div>
 
+<!-- ✅ Tabla para mostrar direcciones guardadas -->
+<div class="tabla-container" *ngIf="direcciones.length > 0">
+  <h3>Listado de Direcciones</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let direccion of direcciones">
+        <td>{{ direccion.id }}</td>
+        <td>{{ direccion.descripcion }}</td>
+        <td>
+          <button (click)="editar(direccion)">✏️ Editar</button>
+          <button (click)="eliminar(direccion.id!)">🗑️ Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

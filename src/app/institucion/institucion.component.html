@@ -1,26 +1,25 @@
 <div class="header-top">
   <button class="back-btn" (click)="volver()">
-    <i class="fas fa-arrow-left"></i> Volver a Mantenimiento
+    <i class="fas fa-arrow-left"></i> Volver A Mantenimiento
   </button>
   <h2>Institución</h2>
 </div>
 
 <div class="registro-container">
-  <form (ngSubmit)="guardar()" #institucionForm="ngForm">
+  <form #form="ngForm" (ngSubmit)="guardar()">
     <div class="form-group">
-      <label for="institucion">Institución</label>
+      <label><i class="fas fa-university"></i> Nombre de la Institución</label>
       <input
         type="text"
-        id="institucion"
-        name="institucion"
-        [(ngModel)]="institucion"
+        placeholder="Ej. Universidad Nacional"
+        [(ngModel)]="nuevaInstitucion.nombre"
+        name="nombre"
         required
-        placeholder="Ejemplo: Universidad Nacional, Instituto Tecnológico..."
       />
     </div>
 
     <div class="form-actions">
-      <button type="submit" [disabled]="!institucionForm.form.valid">
+      <button type="submit" [disabled]="!form.valid">
         <i class="fas fa-save"></i> Guardar
       </button>
       <button type="button" class="btn-limpiar" (click)="limpiar()">
@@ -30,3 +29,25 @@
   </form>
 </div>
 
+<div class="tabla-container" *ngIf="instituciones.length > 0">
+  <h3>Listado de Instituciones</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of instituciones">
+        <td>{{ i.id }}</td>
+        <td>{{ i.nombre }}</td>
+        <td>
+          <button (click)="editar(i)">✏️ Editar</button>
+          <button (click)="eliminar(i.id!)">🗑️ Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,26 +1,25 @@
 <div class="header-top">
   <button class="back-btn" (click)="volver()">
-    <i class="fas fa-arrow-left"></i> Volver a Mantenimiento
+    <i class="fas fa-arrow-left"></i> Volver A Mantenimiento
   </button>
   <h2>Cargo</h2>
 </div>
 
 <div class="registro-container">
-  <form (ngSubmit)="guardar()" #cargoForm="ngForm">
+  <form #cargoForm="ngForm" (ngSubmit)="guardar()">
     <div class="form-group">
-      <label for="cargo">Cargo</label>
+      <label><i class="fas fa-briefcase"></i> Cargo</label>
       <input
         type="text"
-        id="cargo"
+        placeholder="Ej. Gerente de Ventas"
+        [(ngModel)]="nuevoCargo.descripcion"
         name="cargo"
-        [(ngModel)]="cargo"
         required
-        placeholder="Ejemplo: Gerente, Analista, Coordinador..."
       />
     </div>
 
     <div class="form-actions">
-      <button type="submit" [disabled]="!cargoForm.form.valid">
+      <button type="submit" [disabled]="!cargoForm.valid">
         <i class="fas fa-save"></i> Guardar
       </button>
       <button type="button" class="btn-limpiar" (click)="limpiar()">
@@ -28,4 +27,28 @@
       </button>
     </div>
   </form>
+</div>
+
+<!-- ✅ Tabla para mostrar cargos -->
+<div class="tabla-container" *ngIf="cargos.length > 0">
+  <h3>Listado de Cargos</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cargo of cargos">
+        <td>{{ cargo.id }}</td>
+        <td>{{ cargo.descripcion }}</td>
+        <td>
+          <button (click)="editar(cargo)">✏️ Editar</button>
+          <button (click)="eliminar(cargo.id!)">🗑️ Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
