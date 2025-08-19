@@ -27,16 +27,17 @@
           <td>{{ emp.departamento }}</td>
           <td>{{ emp.cargo }}</td>
           <td>
+            <!-- ✅ Solo el estado es clickeable -->
             <span
               class="estado"
-              [ngClass]="{ 'activo': emp.estado === 'Activo', 'inactivo': emp.estado === 'Inactivo' }"
+              [ngClass]="{ 'activo': emp.activo, 'inactivo': !emp.activo }"
               (click)="cambiarEstado(emp)">
-              {{ emp.estado }}
+              {{ emp.activo ? 'Activo' : 'Inactivo' }}
             </span>
           </td>
           <td>
-            <button class="btn-rol" (click)="irARoles(emp)" title="Ver Roles">
-              <i class="fas fa-user-shield"></i>
+            <button class="btn-rol" (click)="irARoles(emp)" title="Gestionar Roles">
+              <i class="fas fa-user-shield"></i> Roles
             </button>
           </td>
         </tr>

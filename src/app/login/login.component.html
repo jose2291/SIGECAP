@@ -1,31 +1,51 @@
 <header class="header">
   <div class="logo">SIGECAP</div>
   <nav class="nav">
-    <a href="/home">Volver al inicio</a>
+    <a routerLink="/home">Volver al inicio</a>
   </nav>
 </header>
 
 <div class="login-container">
-  <img src="assets/img/LOGO TSC 2024_Mesa de trabajo.png" alt="Logo">
+  <img src="assets/img/LOGO TSC 2024_Mesa de trabajo.png" alt="Logo" />
 
   <h2>Iniciar Sesión</h2>
 
-  <form>
+  <!-- ✅ ahora sí llama al método login() -->
+  <form (ngSubmit)="login()" #loginForm="ngForm">
     <div class="form-group icon-input">
       <i class="fas fa-envelope"></i>
-      <input type="email" id="email" name="email" placeholder="Correo Electrónico" required />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Correo Electrónico"
+        [(ngModel)]="email"
+        required
+      />
     </div>
 
     <div class="form-group icon-input">
       <i class="fas fa-lock"></i>
-      <input type="password" id="password" name="password" placeholder="Contraseña" required />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Contraseña"
+        [(ngModel)]="password"
+        required
+      />
     </div>
 
-    <button type="submit">Iniciar sesión</button>
+    <button type="submit" [disabled]="!loginForm.valid || cargando">
+      {{ cargando ? 'Validando...' : 'Iniciar sesión' }}
+    </button>
+
     <a routerLink="/recuperar" class="forgot-password">Recuperar contraseña</a>
   </form>
 </div>
 
 <!-- Iconos Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>

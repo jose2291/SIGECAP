@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 export interface Empleado {
   numeroEmpleado: string;
-  dni: string;
   nombreCompleto: string;
   correo: string;
   departamento: string;
@@ -17,19 +16,17 @@ export interface Empleado {
   providedIn: 'root'
 })
 export class EmpleadoService {
-  private apiUrl = 'https://localhost:7226/api';
+  private apiUrl = 'https://localhost:7226/api/empleado'; // 👉 ajusta según tu backend
 
   constructor(private http: HttpClient) {}
 
-  registrarEmpleado(empleado: Empleado): Observable<any> {
-    return this.http.post(`${this.apiUrl}/empleado`, empleado);
-  }
-
-  buscarPersonaPorCriterio(criterio: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/persona/buscar?criterio=${criterio}`);
-  }
-
+  // Obtener empleados
   obtenerEmpleados(): Observable<Empleado[]> {
-    return this.http.get<Empleado[]>(`${this.apiUrl}/empleado/listar`);
+    return this.http.get<Empleado[]>(`${this.apiUrl}/listar`);
+  }
+
+  // Cambiar estado
+  cambiarEstado(numeroEmpleado: string, activo: boolean): Observable<any> {
+    return this.http.put(`${this.apiUrl}/cambiar-estado/${numeroEmpleado}?activo=${activo}`, {});
   }
 }
