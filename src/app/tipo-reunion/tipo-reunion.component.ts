@@ -13,8 +13,7 @@ import { TipoReunion, TipoReunionService } from '../services/tipo-reunion.servic
 })
 export class TipoReunionComponent implements OnInit {
   tipos: TipoReunion[] = [];
-  nuevoTipo: TipoReunion = { Id: 0, Descripcion: '' };
-
+  nuevoTipo: TipoReunion = { descripcion: '' }; // 👈 en minúscula
   editando: boolean = false;
 
   constructor(private router: Router, private tipoService: TipoReunionService) {}
@@ -25,15 +24,18 @@ export class TipoReunionComponent implements OnInit {
 
   cargarTipos(): void {
     this.tipoService.obtenerTipos().subscribe({
-      next: (data) => (this.tipos = data),
+      next: (data) => {
+        console.log("📌 Datos recibidos del backend:", data);
+        this.tipos = data;
+      },
       error: (err) => console.error('❌ Error al cargar tipos de reunión:', err)
     });
   }
 
   guardar(): void {
-    if (this.editando && this.nuevoTipo.Id) {
-      // Actualizar tipo existente
-      this.tipoService.actualizarTipo(this.nuevoTipo.Id, this.nuevoTipo).subscribe({
+    if (this.editando && this.nuevoTipo.id) {
+      // ✏️ Actualizar tipo existente
+      this.tipoService.actualizarTipo(this.nuevoTipo.id, this.nuevoTipo).subscribe({
         next: () => {
           this.cargarTipos();
           this.limpiar();
@@ -42,7 +44,7 @@ export class TipoReunionComponent implements OnInit {
         error: (err) => console.error('❌ Error al actualizar:', err)
       });
     } else {
-      // Crear nuevo tipo
+      // ✅ Crear nuevo tipo
       this.tipoService.crearTipo(this.nuevoTipo).subscribe({
         next: (tipoGuardado) => {
           this.tipos.push(tipoGuardado);
@@ -63,7 +65,7 @@ export class TipoReunionComponent implements OnInit {
     if (confirm('¿Seguro que deseas eliminar este tipo de reunión?')) {
       this.tipoService.eliminarTipo(id).subscribe({
         next: () => {
-          this.tipos = this.tipos.filter((t) => t.Id !== id);
+          this.tipos = this.tipos.filter((t) => t.id !== id);
           alert('🗑️ Tipo de reunión eliminado');
         },
         error: (err) => console.error('❌ Error al eliminar:', err)
@@ -72,8 +74,7 @@ export class TipoReunionComponent implements OnInit {
   }
 
   limpiar(): void {
-    this.nuevoTipo = { Descripcion: '' } as TipoReunion;
-
+    this.nuevoTipo = { descripcion: '' };
     this.editando = false;
   }
 

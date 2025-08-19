@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface TipoReunion {
-  Id?: number;
-  Descripcion: string; // con D mayúscula
+  id?: number;
+  descripcion: string; // con D mayúscula
 }
 
 @Injectable({

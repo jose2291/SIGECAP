@@ -1,39 +1,53 @@
-<div class="container">
-  <h2>Gestión de Tipos de Reunión</h2>
+<div class="header-top">
+  <button class="back-btn" (click)="volver()" aria-label="Volver a Mantenimiento">
+    <i class="fas fa-arrow-left"></i> Volver a Mantenimiento
+  </button>
+  <h2>Tipo de Reunión</h2>
+</div>
 
-  <!-- Formulario -->
-  <form (ngSubmit)="guardar()" class="form-inline">
-    <input
-      type="text"
-      [(ngModel)]="nuevoTipo.Descripcion"
-      name="Descripcion"
-      placeholder="Descripción"
-      required
-    />
-    <button type="submit">
-      {{ editando ? 'Actualizar' : 'Guardar' }}
-    </button>
-    <button type="button" *ngIf="editando" (click)="limpiar()">Cancelar</button>
+<div class="registro-container">
+  <form #tipoForm="ngForm" (ngSubmit)="guardar()">
+    <div class="form-group">
+      <label><i class="fas fa-handshake"></i> Tipo De Reunion</label>
+      <input
+        type="text"
+        placeholder="Ej. Junta Directiva"
+        [(ngModel)]="nuevoTipo.descripcion"
+        name="descripcion"
+        required
+        class="ng-touched"
+      />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="!tipoForm.valid">
+        <i class="fas fa-save"></i> {{ editando ? 'Actualizar' : 'Guardar' }}
+      </button>
+      <button type="button" class="btn-limpiar" (click)="limpiar()">
+        <i class="fas fa-eraser"></i> Limpiar
+      </button>
+    </div>
   </form>
+</div>
 
-  <hr />
-
-  <!-- Tabla -->
+<!-- ✅ Tabla para mostrar tipos de reunión -->
+<div class="tabla-container" *ngIf="tipos.length > 0">
+  <h3>Listado de Tipos de Reunión</h3>
   <table>
     <thead>
       <tr>
-        <th>Id</th>
+        <th>ID</th>
         <th>Descripción</th>
         <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let tipo of tipos">
-        <td>{{ tipo.Id }}</td>
-        <td>{{ tipo.Descripcion }}</td>
+        <td>{{ tipo.id }}</td>
+        <td>{{ tipo.descripcion }}</td>
         <td>
-          <button (click)="editar(tipo)">Editar</button>
-          <button (click)="eliminar(tipo.Id!)">Eliminar</button>
+          <button (click)="editar(tipo)">✏️ Editar</button>
+          <button (click)="eliminar(tipo.id!)">🗑️ Eliminar</button>
         </td>
       </tr>
     </tbody>
